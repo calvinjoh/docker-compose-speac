@@ -1,7 +1,7 @@
 version: "3.5"
 services:
     app-service:
-        build: ../special-academy
+        build: ../special-accademy
         container_name: app
         image: hub-speacademy.spesandbox.com/special-academy:1.0.0
         environment:
