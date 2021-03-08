@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+    nama-service:
+        image: image:1.0
+        container_name: nama-container
+        ports:
+            - "8080:80"
+        volumes:
+            - vol:/data
+        networks:
+            - nama-network
+volumes:
+    nama-volume:
+        name: "nama-volume"
+networks:
+    nama-network:
+      name: "nama-network"
+        driver: bridge

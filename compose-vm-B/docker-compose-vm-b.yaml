@@ -1,0 +1,37 @@
+version: "3.5"
+services:
+    mongodb-service:
+        image: percona/percona-server-mongodb:4.4
+        container_name: mongodb-primary
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongodb-vol-config:/data/db
+        networks:
+            - mongodb-net-config
+    mysql-service:
+        image: percona/percona-server:8.0
+        container_name: mysql-primary
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "YES"
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql-vol-config:/var/lib/mysql
+            - mysql-vol-config:/var/log/mysql
+        networks:
+            - mysql-net-config
+volumes:
+    mongodb-vol-config:
+      external:
+        name: "mongodb-vol"
+    mysql-vol-config:
+      external:
+        name: "mysql-vol"
+networks:
+    mongodb-net-config:
+      external:
+        name: "mongodb-net"
+    mysql-net-config:
+      external:
+        name: "mysql-net"

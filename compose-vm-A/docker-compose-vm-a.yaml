@@ -1,0 +1,33 @@
+version: "3.5"
+services:
+    app-service:
+        container_name: app
+        image: hub-speacademy.spesandbox.com/special-academy:1.0.0
+        environment:
+            APP_ENV: "dev"
+            DB_MYSQL_HOST: 192.168.75.131
+            DB_MYSQL_PORT: 3306
+            DB_MYSQL_DATABASE: "spe_acc"
+            DB_MYSQL_USERNAME: "speac"
+            DB_MYSQL_PASSWORD: "password"
+            DB_MONGODB_HOST: 192.168.75.131
+            DB_MONGODB_PORT: 27017
+            DB_MONGODB_DATABASE: "spe_acc"
+        ports:
+            - "7000:80"
+        volumes:
+            - app-volume-config:/var/www/html/special-academy/public/storage/upload
+        networks:
+            app-net-config:
+                ipv4_address: 172.1.0.2
+volumes:
+    app-volume-config:
+        name: "app-vol"
+networks:
+    app-net-config:
+        name: "app-net"
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.1.0.0/16
+                  gateway: 172.1.0.1
