@@ -1,7 +1,7 @@
 version: "3.5"
 services:
     app-service:
-        build: ../special-accademy
+        build: ./
         container_name: app
         image: hub-speacademy.spesandbox.com/special-academy:1.0.0
         environment:
@@ -9,8 +9,8 @@ services:
             DB_MYSQL_HOST: 192.168.75.131
             DB_MYSQL_PORT: 3306
             DB_MYSQL_DATABASE: "spe_acc"
-            DB_MYSQL_USERNAME: "speac"
-            DB_MYSQL_PASSWORD: "password"
+            DB_MYSQL_USERNAME: "root"
+            DB_MYSQL_PASSWORD: ""
             DB_MONGODB_HOST: 192.168.75.131
             DB_MONGODB_PORT: 27017
             DB_MONGODB_DATABASE: "spe_acc"

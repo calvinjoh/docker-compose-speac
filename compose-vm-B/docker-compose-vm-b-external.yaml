@@ -23,21 +23,15 @@ services:
             - mysql-net-config
 volumes:
     mongodb-vol-config:
+      external:
         name: "mongodb-vol"
     mysql-vol-config:
+      external:
         name: "mysql-vol"
 networks:
     mongodb-net-config:
+      external:
         name: "mongodb-net"
-        driver: bridge
-        ipam:
-            config:
-                - subnet: 172.3.0.0/16
-                  gateway: 172.3.0.1
     mysql-net-config:
+      external:
         name: "mysql-net"
-        driver: bridge
-        ipam:
-            config:
-                - subnet: 172.2.0.0/16
-                  gateway: 172.2.0.1
